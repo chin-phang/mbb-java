@@ -20,8 +20,8 @@ CREATE TABLE dbo.customer (
 
 INSERT INTO customer (name, email, mobile_no, created_at, created_by)
 VALUES
-('Test customer 222', 'test.customer222@maildrop.cc', '0112205577', current_timestamp, 'system'),
-('Test customer 333', 'test.customer333@maildrop.cc', '0123309988', current_timestamp, 'system');
+('Test customer 1', 'test.customer1@maildrop.cc', '0112205577', current_timestamp, 'system'),
+('Test customer 2', 'test.customer2@maildrop.cc', '0123309988', current_timestamp, 'system');
 
 IF OBJECT_ID (N'dbo.mbb_user', N'U') IS NOT NULL
 DROP TABLE dbo.mbb_user;
@@ -42,8 +42,8 @@ CREATE TABLE dbo.mbb_user (
 
 INSERT INTO mbb_user (username, password_hash, role, customer_id, created_at, created_by)
 VALUES
-('user222', '$2a$10$Z3zRk7Ztyrs2QECEf8hWYeEkeFMTfhyROUA/TelS11VR6fJqDxY4m', 'USER', (select id from dbo.customer where email = 'test.customer222@maildrop.cc'), current_timestamp, 'system'),
-('user333', '$2a$10$Z3zRk7Ztyrs2QECEf8hWYeEkeFMTfhyROUA/TelS11VR6fJqDxY4m', 'USER', (select id from dbo.customer where email = 'test.customer333@maildrop.cc'), current_timestamp, 'system');
+('user222', '$2a$10$Z3zRk7Ztyrs2QECEf8hWYeEkeFMTfhyROUA/TelS11VR6fJqDxY4m', 'USER', (select id from dbo.customer where email = 'test.customer1@maildrop.cc'), current_timestamp, 'system'),
+('user333', '$2a$10$Z3zRk7Ztyrs2QECEf8hWYeEkeFMTfhyROUA/TelS11VR6fJqDxY4m', 'USER', (select id from dbo.customer where email = 'test.customer2@maildrop.cc'), current_timestamp, 'system');
 
 IF OBJECT_ID (N'dbo.account', N'U') IS NOT NULL
 DROP TABLE dbo.account;
@@ -63,9 +63,9 @@ CREATE TABLE dbo.account (
 
 INSERT INTO account (account_type, account_no, customer_id, created_at, created_by)
 VALUES
-('SAVINGS', '8872838283', (select id from dbo.customer where email = 'test.customer222@maildrop.cc'), current_timestamp, 'system'),
-('CURRENT', '8872838299', (select id from dbo.customer where email = 'test.customer222@maildrop.cc'), current_timestamp, 'system'),
-('SAVINGS', '6872838260', (select id from dbo.customer where email = 'test.customer333@maildrop.cc'), current_timestamp, 'system');
+('SAVINGS', '8872838283', (select id from dbo.customer where email = 'test.customer1@maildrop.cc'), current_timestamp, 'system'),
+('CURRENT', '8872838299', (select id from dbo.customer where email = 'test.customer1@maildrop.cc'), current_timestamp, 'system'),
+('SAVINGS', '6872838260', (select id from dbo.customer where email = 'test.customer2@maildrop.cc'), current_timestamp, 'system');
 
 IF OBJECT_ID(N'dbo.mbb_transaction', N'U') IS NOT NULL
 DROP TABLE dbo.mbb_transaction;

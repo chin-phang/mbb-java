@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "a4dd97a2-a862-4f5f-8adb-9a19fd1685cd",
+		"name": "MBB Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36250688"
+	},
+	"item": [
+		{
+			"name": "updateTransaction",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjIyIiwiaWF0IjoxNzE0NTk4NDM4LCJleHAiOjE3MTQ2ODQ4Mzh9.QorXJao6egZSWfNggEq7TC9kvtgqYc-U_Ezaq__gTOM"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"trxRefNo\": \"bf7edddf-113f-4de8-b2ab-c8d23636b0e1\",\r\n   \"accountNo\": \"8872838283\",\r\n   \"trxAmount\": 1123.00,\r\n   \"description\": \"ATM WITHDRAWAL\",\r\n   \"trxDate\": \"2019-09-11\",\r\n   \"trxTime\": \"11:11:11\",\r\n   \"customerId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8880/api/v1/transaction",
+					"host": [
+						"localhost"
+					],
+					"port": "8880",
+					"path": [
+						"api",
+						"v1",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"emilys\",\r\n    \"password\": \"emilyspass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8880/api/v1/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8880",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllTransactions",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjIyIiwiaWF0IjoxNzE0NTk4NDM4LCJleHAiOjE3MTQ2ODQ4Mzh9.QorXJao6egZSWfNggEq7TC9kvtgqYc-U_Ezaq__gTOM"
+					}
+				],
+				"url": {
+					"raw": "localhost:8880/api/v1/transactions?customerId.equals=1&description.contains=withdrwal&accountNo.in=8872838283,8872838299&page=0&size=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8880",
+					"path": [
+						"api",
+						"v1",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "customerId.equals",
+							"value": "1"
+						},
+						{
+							"key": "description.contains",
+							"value": "withdrwal"
+						},
+						{
+							"key": "accountNo.in",
+							"value": "8872838283,8872838299"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

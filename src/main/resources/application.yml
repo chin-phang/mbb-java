@@ -26,3 +26,7 @@ logging:
   level:
     root: INFO
     com.mbb: TRACE
+
+application:
+  external-api:
+    auth: https://dummyjson.com/auth/login
