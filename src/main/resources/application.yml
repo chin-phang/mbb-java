@@ -1,0 +1,28 @@
+server:
+  port: 8880
+
+spring:
+  application:
+    name: assessment
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:sqlserver://127.0.0.1:1433;encrypt=true;trustServerCertificate=true;databaseName=mbb_assessment
+    username: sa
+    password: Password!
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+    jpa:
+      properties:
+        dialect: org.hibernate.dialect.SQLServerDialect
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+
+  liquibase:
+    changeLog: classpath:db/db.changelog-master.yml
+
+logging:
+  level:
+    root: INFO
+    com.mbb: TRACE

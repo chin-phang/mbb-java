@@ -1,0 +1,14 @@
+name: mbb
+
+services:
+
+  db_mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password!
+      - MSSQL_PID=Express
+    volumes:
+      - ./mssql/create_database.sql:/tmp/create_database.sql
+    ports:
+      - 127.0.0.1:1433:1433

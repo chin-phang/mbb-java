@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOGS" value="./logs" />
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{ISO8601} %highlight(%-5level) [%magenta(%thread)] %cyan(%logger{45}): %msg%n%throwable</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{ISO8601} %highlight(%-5level) [%magenta(%thread)] %cyan(%logger{45}): %msg%n%throwable</Pattern>
+        </encoder>
+        <file>${LOGS}/mbb-java.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/mbb-java-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>1KB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>10KB</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+    </appender>
+
+    <!-- LOG everything at INFO level -->
+    <root level="INFO">
+        <appender-ref ref="RollingFile" />
+        <appender-ref ref="Console" />
+    </root>
+
+    <!-- LOG "com.mbb*" at TRACE level -->
+    <logger name="com.mbb" level="TRACE" additivity="false">
+        <appender-ref ref="RollingFile" />
+        <appender-ref ref="Console" />
+    </logger>
+
+</configuration>

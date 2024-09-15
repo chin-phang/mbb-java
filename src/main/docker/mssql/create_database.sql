@@ -1,0 +1,1 @@
+CREATE DATABASE mbb_assessment;

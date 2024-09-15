@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/1_init_db_20240915.sql
+  - include:
+      file: db/changelog/2_create_batch_tables_20240915.sql
