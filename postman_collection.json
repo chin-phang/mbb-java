@@ -10,12 +10,7 @@
 			"name": "updateTransaction",
 			"request": {
 				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjIyIiwiaWF0IjoxNzE0NTk4NDM4LCJleHAiOjE3MTQ2ODQ4Mzh9.QorXJao6egZSWfNggEq7TC9kvtgqYc-U_Ezaq__gTOM"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n   \"trxRefNo\": \"bf7edddf-113f-4de8-b2ab-c8d23636b0e1\",\r\n   \"accountNo\": \"8872838283\",\r\n   \"trxAmount\": 1123.00,\r\n   \"description\": \"ATM WITHDRAWAL\",\r\n   \"trxDate\": \"2019-09-11\",\r\n   \"trxTime\": \"11:11:11\",\r\n   \"customerId\": 1\r\n}",
@@ -77,12 +72,7 @@
 					"type": "noauth"
 				},
 				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjIyIiwiaWF0IjoxNzE0NTk4NDM4LCJleHAiOjE3MTQ2ODQ4Mzh9.QorXJao6egZSWfNggEq7TC9kvtgqYc-U_Ezaq__gTOM"
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "localhost:8880/api/v1/transactions?customerId.equals=1&description.contains=withdrwal&accountNo.in=8872838283,8872838299&page=0&size=10",
 					"host": [
